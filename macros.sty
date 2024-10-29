@@ -1,0 +1,270 @@
+%------------------------------------------------------------------------------------------------
+
+% Environments and others
+
+\newcommand{\bsparagraph}[1]{\bigskip\noindent\textbf{#1}\,}
+\newcommand{\msparagraph}[1]{\medskip\noindent\textbf{#1}\,}
+\newcommand{\ssparagraph}[1]{\smallskip\noindent\textbf{#1}\,}
+\newcommand{\nsparagraph}[1]{\noindent\textbf{#1}\,}
+
+\newenvironment{nscenter}
+ {\parskip=3.2pt\par\nopagebreak\centering}
+ {\par\noindent\ignorespacesafterend}
+
+\newcommand{\iffdef}{\stackrel{\mbox{\begin{tiny}def\end{tiny}}}{\Leftrightarrow}} % =def=
+\newcommand{\egdef}{\stackrel{\mbox{\begin{tiny}def\end{tiny}}}{=}} % =def=
+\newcommand{\eqdef}{\stackrel{\mbox{\begin{tiny}def\end{tiny}}}{\equiv}} % =def=
+  
+%------------------------------------------------------------------------------------------------
+% utils
+
+%abbreviations
+\newcommand{\ti}[1]{\textit{#1}}
+\newcommand{\bs}[1]{\boldsymbol{#1}}
+
+% Sets \cset{x,y} = {x,y}
+\newcommand{\cset}[1]{\{ #1 \}}
+% Sets with condition \csetsc{y}{xRy} = {y | xRy}
+\newcommand{\csetsc}[2]{\{ #1  \mid #2 \}}
+% Sets with domain and condition \csetc{y}{A}{xRy} = {y \in A | xRy}
+\newcommand{\csetc}[3]{\{ #1 \in #2 \mid #3 \}}
+
+%notation
+\newcommand{\card}[1]{{\mid\!{#1}\!\mid}}
+\newcommand{\tup}[1]{(#1)}
+\newcommand{\pow}[1]{\wp(#1)}
+\newcommand{\natnum}{\mathbb{N}}
+\newcommand{\intnum}{\mathbb{Z}}
+\newcommand{\intint}[2]{[#1 \mathop{..} #2]}
+\newcommand{\truthset}[2]{\llbracket #2 \rrbracket^{#1}}
+
+
+% % KH items
+% \newcommand{\itmkhformat}[1]{\textbf{\textit{(\ensuremath{\bs{\kh}}-#1)}}}
+% \newcommand{\ITMKHi}{\itmkhformat{1}\xspace}
+% \newcommand{\ITMKHii}{\itmkhformat{2}\xspace}
+
+% %for proofs 
+% \newcommand{\Limp}{\Rightarrow}
+% \newcommand{\prooflr}{\ensuremath{\bs{(\Rightarrow)}}\xspace}
+% \newcommand{\proofrl}{\ensuremath{\bs{(\Leftarrow)}}\xspace}
+% \newcommand{\proofsb}{\ensuremath{\bs{(\subseteq)}}\xspace}
+% \newcommand{\proofsp}{\ensuremath{\bs{(\supseteq)}}\xspace}
+
+%------------------------------------------------------------------------------------------------
+
+% basic sets
+\newcommand{\PROP}{{\rm \sf Prop}\xspace}
+\newcommand{\ACT}{{\rm \sf Act}\xspace}
+\newcommand{\actions}{\ACT}
+\newcommand{\AGT}{{\rm \sf Agt}\xspace}
+\newcommand{\agents}{\AGT}
+\newcommand{\aagent}{\mathfrak{a}}
+\newcommand{\aagentbis}{\mathfrak{b}}
+\newcommand{\ACTP}{{\operatorname{A}}\xspace}
+\newcommand{\Comp}{{\rm \sf Comp}\xspace}
+
+% syntax
+\newcommand{\kh}{{\operatorname{\sf Kh}}}
+\newcommand{\K}{{\operatorname{\sf K}}}
+\newcommand{\khi}{{\operatorname{\sf Kh}_\aagent}}
+\newcommand{\khib}{{\operatorname{\sf Kh}^{\vec{b}}_\aagent}}
+\newcommand{\rkhi}{\operatorname{\sf Kh}^{\resourceb}_\aagent}
+\newcommand{\limp}{\rightarrow}
+\newcommand{\ra}{\rightarrow}
+\newcommand{\lra}{\leftrightarrow}
+\newcommand{\A}{{\operatorname{\sf A}}}
+\newcommand{\E}{{\operatorname{\sf E}}}
+
+\newcommand{\resourceb}{\vec{b}}
+
+% languages
+\newcommand{\KHlogic}{\ensuremath{\mathsf{L}_\kh}\xspace}
+%% \newcommand{\KHilogic}{\ensuremath{\mathsf{L}_\khi}\xspace}
+\newcommand{\KHilogic}{\TARKlogic_{reg}\xspace}
+
+
+% translation
+\newcommand{\tr}[1]{\operatorname{tr}_{#1}}
+\DeclareMathAlphabet{\mathpzc}{OT1}{pzc}{m}{it}
+
+% models
+\newcommand{\modlts}{\mathcal{S}}
+\newcommand{\modults}{\mathcal{M}}
+\newcommand{\model}{\modults}
+\newcommand{\cults}{\mathcal{C}}
+\newcommand{\clts}{\mathcal{C}_2}
+
+\renewcommand{\models}{\Vdash}
+
+\newcommand{\W}{\operatorname{W}}
+\newcommand{\R}{\operatorname{R}}
+\newcommand{\regclass}{\operatorname{U}}
+\newcommand{\uncertainty}{\operatorname{U}}
+% \newcommand{\V}{\operatorname{V}}
+\newcommand{\V}{\alabelling}
+\newcommand{\alabelling}{\operatorname{L}}
+\newcommand{\wf}{\mathpzc{wf}}
+\newcommand{\strategy}{\uppi}
+\newcommand{\witness}{{\alang(\aautomaton)}}
+\newcommand{\D}[1]{\operatorname{D}_{#1}}
+%% \newcommand{\DS}[1]{\operatorname{\Pi}_{#1}}
+\newcommand{\DS}[1]{\asetplans_{#1}}
+
+\newcommand{\sepda}{\aautomaton^{\astate,\astatebis,\aaction}}
+
+
+\newcommand{\lts}{\textup{LTS}\xspace}
+\newcommand{\ltss}{{\lts}s\xspace}
+\newcommand{\ults}{\textup{LTS$^\text{\textup{U}}$}\xspace}
+\newcommand{\rults}{\textup{R-LTS$^\text{\textup{U}}$}\xspace}
+\newcommand{\ultss}{{\ults}s\xspace}
+\newcommand{\regults}{\textup{reg-LTS$^\text{\textup{U}}$}\xspace}
+
+\newcommand{\signature}{\Sigma}
+
+\newcommand{\cmodel}{\modults^\Gamma}
+
+\newcommand{\sel}{\mathsf{sel}}
+\newcommand{\proj}{\mathsf{pr}}
+
+% notions of executability
+\newcommand{\stexec}{\operatorname{SE}}
+\newcommand{\wkexec}{\operatorname{WE}}
+
+\newcommand{\checkSE}{\mathtt{CheckSE}}
+
+\newcommand{\cost}{\mathsf{cost}}
+
+% axiom systems
+\newcommand{\axm}[1]{{\rm \textsf{#1}}}
+\newcommand{\KHaxiom}{\ensuremath{\mathcal{L}^{\lts}_{\kh}}\xspace}
+\newcommand{\KHiaxiom}{\ensuremath{\mathcal{L}^{\ults}_{\khi}}\xspace}
+\newcommand{\axset}{\mathcal{L}}
+
+% completeness proof
+\newcommand{\smcs}{\boldsymbol{\Phi}}
+\newcommand{\restkh}[1]{#1\vert_{\kh}}
+\newcommand{\restnkh}[1]{#1\vert_{\lnot\kh}}
+\newcommand{\restkhi}[1]{#1\vert_{\khi}}
+\newcommand{\restnkhi}[1]{#1\vert_{\lnot\khi}}
+\newcommand{\resta}[1]{#1\vert_{\A}}
+\newcommand{\restna}[1]{#1\vert_{\lnot\A}}
+
+%------------------------------------------------------------------------------------------------
+
+% To write notes in the text
+\newcommand{\raul}[1]{\todo[color=yellow!55]{{\bf Raul:} #1}\xspace}
+\newcommand{\bigraul}[1]{\todo[inline,color=yellow!55]{{\bf Raul:} #1}}
+
+
+\newcommand{\stephane}[1]{\todo[color=blue!20]{{\bf Ste:} #1}\xspace}
+\newcommand{\bigstephane}[1]{\todo[inline,color=blue!20]{{\bf Ste:} #1}}
+
+\colorlet{colorhighlight}{Yellow}
+\newcommand{\hlight}[1]{{\setlength{\fboxsep}{2pt}\colorbox{colorhighlight}{#1}}}
+\newcommand{\hlightmath}[1]{{\setlength{\fboxsep}{2pt}\colorbox{colorhighlight}{\ensuremath{#1}}}}
+
+%------------------------------------------------------------------------------------------------
+
+% Complexity classes
+\newcommand{\np}{{\rm\textsf{NP}}\xspace}
+\newcommand{\ptime}{{\rm\textsf{PTime}}\xspace}
+\newcommand{\pspace}{{\rm\textsf{PSpace}}\xspace}
+\newcommand{\npspace}{{\rm\textsf{NPSpace}}\xspace}
+\newcommand{\exptime}{{\rm\textsf{ExpTime}}\xspace}
+\newcommand{\expspace}{{\rm\textsf{ExpSpace}}\xspace}
+\newcommand{\twoexpspace}{{\rm\textsf{2ExpSpace}}\xspace}
+\newcommand{\nexptime}{{\rm\textsf{NExptime}}\xspace}
+\newcommand{\nlogspace}{{\rm\textsf{NLogSpace}}\xspace}
+\newcommand{\logspace}{{\rm\textsf{LogSpace}}\xspace}
+\newcommand{\ack}{{\rm\textsf{Ack}}\xspace}
+
+
+
+%% Stephane Macros
+
+\newcommand{\Wanglogic}{\mathcal{L}_{kh}}
+\newcommand{\KHM}{\mathcal{L}_{khm}}
+\newcommand{\TARKlogic}{\mathcal{L}^{\rm U}}
+\newcommand{\modelchecking}[1]{{\rm MC (}#1{\rm )}}
+\newcommand{\states}{\operatorname{S}}
+\newcommand{\astate}{s}
+\newcommand{\astatebis}{t}
+\newcommand{\astateter}{u}
+\newcommand{\relations}{(\R_{\aaction})_{\aaction \in \ACT}}
+\newcommand{\avaluation}{\V}
+\newcommand{\alts}{\modlts}
+\newcommand{\aregclass}{(\regclass_{\aagent})_{\aagent\in\AGT}}
+\newcommand{\aaction}{\mathtt{a}}
+\newcommand{\aactionbis}{\mathtt{b}}
+\newcommand{\aactionter}{\mathtt{c}}
+\newcommand{\pair}[2]{\tup{#1,#2}}
+\newcommand{\triple}[3]{\tup{#1,#2,#3}}
+\newcommand{\quadruple}[4]{\tup{#1,#2,#3,#4}}
+\newcommand{\defstyle}[1]{\textbf{#1}}
+\newcommand{\aformula}{\varphi} % a formula
+\newcommand{\aformulabis}{\psi} % another formula (when at least 2 are present)
+\newcommand{\aformulater}{\chi} % another formula (when at least 3 are present)
+\newcommand{\avarprop}{\mathtt{p}}
+\newcommand{\avarpropbis}{\mathtt{q}}
+\newcommand{\avarpropter}{\mathtt{r}}
+\newcommand{\interval}[2]{[#1,#2]}
+\newcommand{\alang}{{\rm L}}
+\newcommand{\aautomaton}{\mathcal{A}}
+\newcommand{\aautomatonbis}{\mathcal{B}}
+\newcommand{\locations}{Q}
+\newcommand{\alocation}{q}
+\newcommand{\alocationbis}{p}
+\newcommand{\set}[1]{\{ #1 \}}
+\newcommand{\equivaut}{\;\Leftrightarrow\;}
+\newcommand{\equivdef}{\stackrel{\mbox{\begin{tiny}def\end{tiny}}}{\equivaut}} % <=def=>
+\newcommand{\aplan}{\sigma}
+
+\newcommand{\step}[1]{\xrightarrow{\!\!#1\!\!}}
+\newcommand{\backstep}[1]{\xleftarrow{\!\!#1\!\!}}
+\newcommand{\length}[1]{|#1|}
+\newcommand{\aset}{X}
+\newcommand{\asetbis}{Y}
+\newcommand{\asetter}{Z}
+\newcommand{\powerset}[1]{{\cal P}(#1)}
+
+\newcommand{\WanglogicBudget}[1]{\Wanglogic(#1)}
+\newcommand{\TARKlogicBudget}[1]{\TARKlogic(#1)}
+\newcommand{\KHilogicBudget}[1]{\KHilogic(#1)}
+\newcommand{\acomputation}{\lambda}
+\newcommand{\Zed}{\ensuremath{\mathbb{Z}}}
+\newcommand{\Nat}{\ensuremath{\mathbb{N}}}
+
+\newcommand{\avass}{\mathcal{V}}
+\newcommand{\atransition}{T}
+\newcommand{\arun}{\rho}
+\newcommand{\apseudorun}{\rho}
+\newcommand{\awgraph}{\mathcal{G}}
+\newcommand{\apath}{\pi}
+\newcommand{\Logic}[1]{\textsf{#1}\xspace}
+\newcommand{\ATL}{\Logic{ATL}}
+\newcommand{\CTL}{\Logic{CTL}}
+\newcommand{\logicK}{\Logic{K}}
+\newcommand{\cut}[1]{}
+\newcommand{\asetplans}{\Pi}
+\newcommand{\agraph}{\mathcal{G}}
+
+\newcommand{\ourvasspb}{$\mathtt{SyncP}$\xspace}
+\newcommand{\ourvasspbone}{$\mathtt{SyncP(1)}$\xspace}
+\newcommand{\prestar}[1]{pre^{\star}(#1)}
+\newcommand{\pre}[2]{pre_{#1}(#2)}
+\newcommand{\amap}{f}
+\newcommand{\amapbis}{g}
+\newcommand{\support}[1]{supp(#1)} 
+\newcommand{\ats}{\mathcal{T}}
+
+\newcommand{\nonsafevass}{$\mathtt{NONSAFE(VASS)}$\xspace}
+\newcommand{\creachvass}{$\mathtt{CREACH(VASS)}$\xspace}
+\newcommand{\nonsafeonevass}{$\mathtt{NONSAFE(1{\textrm{-}}VASS)}$\xspace}
+\newcommand{\creachresetvass}{$\mathtt{CREACH(RVASS)}$\xspace}
+
+%% \newcommand{\BoundCorollaryPspace}{2^{3 \cdot \card{\states}} \cdot \card{\states}^3}
+%%
+%% S 13/11/2023 -- to be updated after checking the computation
+\newcommand{\BoundCorollaryPspace}{2^{\card{\states}(\card{\states} + 2)}}
