@@ -56,10 +56,13 @@
 % basic sets
 \newcommand{\PROP}{{\rm \sf Prop}\xspace}
 
-
+\mathchardef\mhyphen="2D
 % syntax
 \newcommand{\Next}{{\operatorname{\sf X}}}
-\newcommand{\Prev}{{\operatorname{\sf X}^{-}}}
+\newcommand{\Prev}{{\operatorname{\sf X}^{\mhyphen 1}}}
+\newcommand{\Nexti}{{\operatorname{\sf X}_i}}
+\newcommand{\Previ}{{\operatorname{\sf X}_i^{\mhyphen 1}}}
+
 \newcommand{\Since}{{\operatorname{\sf S}}}
 \renewcommand{\Until}{{\operatorname{\sf U}}}
 \newcommand{\Always}{{\operatorname{\sf G}}}
