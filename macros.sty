@@ -55,45 +55,31 @@
 
 % basic sets
 \newcommand{\PROP}{{\rm \sf Prop}\xspace}
-\newcommand{\ACT}{{\rm \sf Act}\xspace}
-\newcommand{\actions}{\ACT}
-\newcommand{\AGT}{{\rm \sf Agt}\xspace}
-\newcommand{\agents}{\AGT}
-\newcommand{\aagent}{\mathfrak{a}}
-\newcommand{\aagentbis}{\mathfrak{b}}
-\newcommand{\ACTP}{{\operatorname{A}}\xspace}
-\newcommand{\Comp}{{\rm \sf Comp}\xspace}
+
 
 % syntax
-\newcommand{\kh}{{\operatorname{\sf Kh}}}
-\newcommand{\K}{{\operatorname{\sf K}}}
-\newcommand{\khi}{{\operatorname{\sf Kh}_\aagent}}
-\newcommand{\khib}{{\operatorname{\sf Kh}^{\vec{b}}_\aagent}}
-\newcommand{\rkhi}{\operatorname{\sf Kh}^{\resourceb}_\aagent}
+\newcommand{\Next}{{\operatorname{\sf X}}}
+\newcommand{\Prev}{{\operatorname{\sf X}^{-}}}
+\newcommand{\Since}{{\operatorname{\sf S}}}
+\renewcommand{\Until}{{\operatorname{\sf U}}}
+\newcommand{\Always}{{\operatorname{\sf G}}}
+\newcommand{\Eventually}{{\operatorname{\sf F}}}
+\newcommand{\Past}{{\operatorname{\sf P}}}
+
+\newcommand{\Assign}[2]{\langle{#1{:=}#2}\rangle}
+
+
 \newcommand{\limp}{\rightarrow}
 \newcommand{\ra}{\rightarrow}
 \newcommand{\lra}{\leftrightarrow}
 \newcommand{\A}{{\operatorname{\sf A}}}
 \newcommand{\E}{{\operatorname{\sf E}}}
 
-\newcommand{\resourceb}{\vec{b}}
-
-% languages
-\newcommand{\KHlogic}{\ensuremath{\mathsf{L}_\kh}\xspace}
-%% \newcommand{\KHilogic}{\ensuremath{\mathsf{L}_\khi}\xspace}
-\newcommand{\KHilogic}{\TARKlogic_{reg}\xspace}
-
-
 % translation
 \newcommand{\tr}[1]{\operatorname{tr}_{#1}}
 \DeclareMathAlphabet{\mathpzc}{OT1}{pzc}{m}{it}
 
-% models
-\newcommand{\modlts}{\mathcal{S}}
-\newcommand{\modults}{\mathcal{M}}
-\newcommand{\model}{\modults}
-\newcommand{\cults}{\mathcal{C}}
-\newcommand{\clts}{\mathcal{C}_2}
+% model
 
 \renewcommand{\models}{\Vdash}
 
@@ -103,55 +89,11 @@
 \newcommand{\uncertainty}{\operatorname{U}}
 % \newcommand{\V}{\operatorname{V}}
 \newcommand{\V}{\alabelling}
-\newcommand{\alabelling}{\operatorname{L}}
-\newcommand{\wf}{\mathpzc{wf}}
-\newcommand{\strategy}{\uppi}
-\newcommand{\witness}{{\alang(\aautomaton)}}
-\newcommand{\D}[1]{\operatorname{D}_{#1}}
-%% \newcommand{\DS}[1]{\operatorname{\Pi}_{#1}}
-\newcommand{\DS}[1]{\asetplans_{#1}}
 
-\newcommand{\sepda}{\aautomaton^{\astate,\astatebis,\aaction}}
-
-
-\newcommand{\lts}{\textup{LTS}\xspace}
-\newcommand{\ltss}{{\lts}s\xspace}
-\newcommand{\ults}{\textup{LTS$^\text{\textup{U}}$}\xspace}
-\newcommand{\rults}{\textup{R-LTS$^\text{\textup{U}}$}\xspace}
-\newcommand{\ultss}{{\ults}s\xspace}
-\newcommand{\regults}{\textup{reg-LTS$^\text{\textup{U}}$}\xspace}
 
 \newcommand{\signature}{\Sigma}
 
-\newcommand{\cmodel}{\modults^\Gamma}
 
-\newcommand{\sel}{\mathsf{sel}}
-\newcommand{\proj}{\mathsf{pr}}
-
-% notions of executability
-\newcommand{\stexec}{\operatorname{SE}}
-\newcommand{\wkexec}{\operatorname{WE}}
-
-\newcommand{\checkSE}{\mathtt{CheckSE}}
-
-\newcommand{\cost}{\mathsf{cost}}
-
-% axiom systems
-\newcommand{\axm}[1]{{\rm \textsf{#1}}}
-\newcommand{\KHaxiom}{\ensuremath{\mathcal{L}^{\lts}_{\kh}}\xspace}
-\newcommand{\KHiaxiom}{\ensuremath{\mathcal{L}^{\ults}_{\khi}}\xspace}
-\newcommand{\axset}{\mathcal{L}}
-
-% completeness proof
-\newcommand{\smcs}{\boldsymbol{\Phi}}
-\newcommand{\restkh}[1]{#1\vert_{\kh}}
-\newcommand{\restnkh}[1]{#1\vert_{\lnot\kh}}
-\newcommand{\restkhi}[1]{#1\vert_{\khi}}
-\newcommand{\restnkhi}[1]{#1\vert_{\lnot\khi}}
-\newcommand{\resta}[1]{#1\vert_{\A}}
-\newcommand{\restna}[1]{#1\vert_{\lnot\A}}
-
-%------------------------------------------------------------------------------------------------
 
 % To write notes in the text
 \newcommand{\raul}[1]{\todo[color=yellow!55]{{\bf Raul:} #1}\xspace}
@@ -179,15 +121,15 @@
 \newcommand{\nlogspace}{{\rm\textsf{NLogSpace}}\xspace}
 \newcommand{\logspace}{{\rm\textsf{LogSpace}}\xspace}
 \newcommand{\ack}{{\rm\textsf{Ack}}\xspace}
+\newcommand{\tower}{{\rm\textsf{Tower}}\xspace}
 
 
 
 %% Stephane Macros
 
-\newcommand{\Wanglogic}{\mathcal{L}_{kh}}
-\newcommand{\KHM}{\mathcal{L}_{khm}}
-\newcommand{\TARKlogic}{\mathcal{L}^{\rm U}}
 \newcommand{\modelchecking}[1]{{\rm MC (}#1{\rm )}}
+\newcommand{\sat}[1]{{\rm SAT (}#1{\rm )}}
+
 \newcommand{\states}{\operatorname{S}}
 \newcommand{\astate}{s}
 \newcommand{\astatebis}{t}
@@ -229,42 +171,13 @@
 \newcommand{\asetter}{Z}
 \newcommand{\powerset}[1]{{\cal P}(#1)}
 
-\newcommand{\WanglogicBudget}[1]{\Wanglogic(#1)}
-\newcommand{\TARKlogicBudget}[1]{\TARKlogic(#1)}
-\newcommand{\KHilogicBudget}[1]{\KHilogic(#1)}
-\newcommand{\acomputation}{\lambda}
 \newcommand{\Zed}{\ensuremath{\mathbb{Z}}}
 \newcommand{\Nat}{\ensuremath{\mathbb{N}}}
 
-\newcommand{\avass}{\mathcal{V}}
-\newcommand{\atransition}{T}
-\newcommand{\arun}{\rho}
-\newcommand{\apseudorun}{\rho}
-\newcommand{\awgraph}{\mathcal{G}}
+
 \newcommand{\apath}{\pi}
 \newcommand{\Logic}[1]{\textsf{#1}\xspace}
-\newcommand{\ATL}{\Logic{ATL}}
-\newcommand{\CTL}{\Logic{CTL}}
-\newcommand{\logicK}{\Logic{K}}
+\newcommand{\LTL}{\Logic{LTL}}
+\newcommand{\PLTL}{\Logic{PLTL}}
+\newcommand{\PLTLA}{\Logic{PLTL-A}}
 \newcommand{\cut}[1]{}
-\newcommand{\asetplans}{\Pi}
-\newcommand{\agraph}{\mathcal{G}}
-
-\newcommand{\ourvasspb}{$\mathtt{SyncP}$\xspace}
-\newcommand{\ourvasspbone}{$\mathtt{SyncP(1)}$\xspace}
-\newcommand{\prestar}[1]{pre^{\star}(#1)}
-\newcommand{\pre}[2]{pre_{#1}(#2)}
-\newcommand{\amap}{f}
-\newcommand{\amapbis}{g}
-\newcommand{\support}[1]{supp(#1)} 
-\newcommand{\ats}{\mathcal{T}}
-
-\newcommand{\nonsafevass}{$\mathtt{NONSAFE(VASS)}$\xspace}
-\newcommand{\creachvass}{$\mathtt{CREACH(VASS)}$\xspace}
-\newcommand{\nonsafeonevass}{$\mathtt{NONSAFE(1{\textrm{-}}VASS)}$\xspace}
-\newcommand{\creachresetvass}{$\mathtt{CREACH(RVASS)}$\xspace}
-
-%% \newcommand{\BoundCorollaryPspace}{2^{3 \cdot \card{\states}} \cdot \card{\states}^3}
-%%
-%% S 13/11/2023 -- to be updated after checking the computation
-\newcommand{\BoundCorollaryPspace}{2^{\card{\states}(\card{\states} + 2)}}
