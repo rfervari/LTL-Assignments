@@ -1,0 +1,25 @@
+In what follows we will consider a concrete domain $\pair{\adomain}{=}$, where $\adomain$ is an infinite set and $=$ its correspondent equality relation. In what follows we will write just $\adomain$ for $\pair{\adomain}{=}$ to abbreviate.
+
+\paragraph{Syntax.} Let $\VAR$ be a countable set of variables over the concrete domain $\adomain$. The syntax of $\PLTLA(\adomain)$ is defined by the following grammar:
+\[
+    \aformula,\aformulabis ::= \delta\avar = \delta'\avarbis \mid \neg\aformula \mid \aformula \vee \aformulabis \mid \Next\aformula \mid \Prev\aformula \mid \aformula \Until \aformulabis \mid \aformula\Since\aformulabis \mid \Assign{\avar}{\Nextn\avarbis} \mid \Assign{\avar}{\Prevn\avarbis},
+\]
+where $\avar,\avarbis\in\VAR$, $i\in\Nat_0$, and $\delta,\delta'\in\{\Nextn,\Prevn\}$. Other operators are defined as usual, in particular $\delta\avar \neq \delta'\avarbis\egdef \delta\avar = \delta'\avarbis$.
+
+\paragraph{Sematics.} A \emph{concrete path} over $\adomain$ is an element $\apath\in\{f\mid f:\VAR\to\adomain\}^\omega$. By $\apath(i)(\avar)$ we denote the value assigned to the variable $\avar$ at position $i$ of the path.
+
+
+\begin{theorem}
+ The satisfiability problem for $\PLTLA(\adomain)$ is \tower-hard.
+\end{theorem}
+
+\begin{proof}
+    To show hardness, we can show what we can reduce the satisfiability problem of $\FOL$ over linear models, or from Hybrid $\LTL$ (see~\cite{FranceschetRS03}).
+
+    \bigraul{The question is, can we reduce it into $\PLTLA(\adomain)$ with only 1 variable??}
+\end{proof}
+
+\begin{conjecture}
+    There is a translation from $\PLTLA(\adomain)$ into $\FOL$ over data words. Thus, the satisfiability problem for $\PLTLA(\adomain)$ is in \ack.
+\end{conjecture}
+

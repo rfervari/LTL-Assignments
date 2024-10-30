@@ -8,6 +8,7 @@
 \newtheorem{fact}{Fact}[section]
 \newtheorem{remark}{Remark}[section]
 \newtheorem{claim}{Claim}[section]
+\newtheorem{conjecture}{Conjecture}[section]
 
 \newtheorem{definition}{Definition}[section]
 \newtheorem{example}{Example}[section]
@@ -48,6 +49,8 @@
 \newcommand{\intint}[2]{[#1 \mathop{..} #2]}
 \newcommand{\truthset}[2]{\llbracket #2 \rrbracket^{#1}}
 
+\newcommand{\adomain}{\mathbb{D}}
+
 
 % % KH items
 % \newcommand{\itmkhformat}[1]{\textbf{\textit{(\ensuremath{\bs{\kh}}-#1)}}}
@@ -65,6 +68,7 @@
 
 % basic sets
 \newcommand{\PROP}{{\rm \sf Prop}\xspace}
+\newcommand{\VAR}{{\rm \sf Var}\xspace}
 
 \mathchardef\mhyphen="2D
 % syntax
@@ -164,6 +168,9 @@
 \newcommand{\avarprop}{\mathtt{p}}
 \newcommand{\avarpropbis}{\mathtt{q}}
 \newcommand{\avarpropter}{\mathtt{r}}
+\newcommand{\avar}{\mathtt{x}}
+\newcommand{\avarbis}{\mathtt{y}}
+\newcommand{\avarter}{\mathtt{z}}
 \newcommand{\interval}[2]{[#1,#2]}
 \newcommand{\alang}{{\rm L}}
 \newcommand{\aautomaton}{\mathcal{A}}
@@ -189,7 +196,8 @@
 
 
 \newcommand{\apath}{\sigma}
-\newcommand{\Logic}[1]{\textsf{#1}\xspace}
+
+\newcommand{\Logic}[1]{{\rm\textsf{#1}}\xspace}
 \newcommand{\LTL}{\Logic{LTL}}
 \newcommand{\FOL}{\Logic{FO}}
 \newcommand{\MSO}{\Logic{MSO}}
