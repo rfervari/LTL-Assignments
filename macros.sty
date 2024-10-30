@@ -1,6 +1,16 @@
 %------------------------------------------------------------------------------------------------
 
 % Environments and others
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{corollary}{Corollary}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{fact}{Fact}[section]
+\newtheorem{remark}{Remark}[section]
+\newtheorem{claim}{Claim}[section]
+
+\newtheorem{definition}{Definition}[section]
+\newtheorem{example}{Example}[section]
 
 \newcommand{\bsparagraph}[1]{\bigskip\noindent\textbf{#1}\,}
 \newcommand{\msparagraph}[1]{\medskip\noindent\textbf{#1}\,}
@@ -60,8 +70,8 @@
 % syntax
 \newcommand{\Next}{{\operatorname{\sf X}}}
 \newcommand{\Prev}{{\operatorname{\sf X}^{\mhyphen 1}}}
-\newcommand{\Nexti}{{\operatorname{\sf X}_i}}
-\newcommand{\Previ}{{\operatorname{\sf X}_i^{\mhyphen 1}}}
+\newcommand{\Nextn}{{\operatorname{\sf X}_n}}
+\newcommand{\Prevn}{{\operatorname{\sf X}_n^{\mhyphen 1}}}
 
 \newcommand{\Since}{{\operatorname{\sf S}}}
 \renewcommand{\Until}{{\operatorname{\sf U}}}
@@ -178,9 +188,11 @@
 \newcommand{\Nat}{\ensuremath{\mathbb{N}}}
 
 
-\newcommand{\apath}{\pi}
+\newcommand{\apath}{\sigma}
 \newcommand{\Logic}[1]{\textsf{#1}\xspace}
 \newcommand{\LTL}{\Logic{LTL}}
+\newcommand{\FOL}{\Logic{FO}}
+\newcommand{\MSO}{\Logic{MSO}}
 \newcommand{\PLTL}{\Logic{PLTL}}
 \newcommand{\PLTLA}{\Logic{PLTL-A}}
 \newcommand{\cut}[1]{}

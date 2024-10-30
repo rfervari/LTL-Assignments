@@ -18,13 +18,14 @@
 \usepackage{algorithm}
 \usepackage{algpseudocode}
 \usepackage{stmaryrd}
-
+\usepackage{amsthm}
 \usepackage[draft]{fixme}
 
 \usepackage[font=small,skip=0pt]{caption}
 
 \usepackage{mathabx}
 \usepackage{wasysym}
+\usepackage{mathtools}
 %------------------------------------------------------------------------------------------------
 
 %------------------------------------------------------------------------------------------------
@@ -51,7 +52,9 @@
 
 %------------------------------------------------------------------------------------------------
 
-\title{Past $\LTL$ with Assigments on Simple Domains}
+% \title{Past $\LTL$ with Assignments on Simple Domains}
+\title{Temporal Logic with Assignments Modulo Simple Theories}
+
 \author{St\'ephane Demri and Raul Fervari}
 
 \date{ } 
@@ -61,7 +64,9 @@
 \begin{document}
 \maketitle 
 
-
+\begin{abstract}
+  In this paper we investigate the computational complexity and the expressive power of a family of temporal logics featuring simple assignment operators. More precisely, we extend Past $\LTL$ ($\PLTL$) with assigment operators, acting over different domains. First, we study the effect of updating the propositional value of a variable according to the truth value of the truth value of some ``locally visible'' variable. We show that with this simple update, we obtain full $\FOL$ expressivity, and moreover, even in restricted cases, this extension leads to a $\tower$-complete satisfiability problem. Then, we extend $\PLTL$ with concrete domains and operators that update the value of variables ranging over such a domain. TBC...
+\end{abstract}
 
 \section{Introduction}
 
