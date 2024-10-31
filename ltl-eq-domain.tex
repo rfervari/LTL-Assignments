@@ -1,12 +1,38 @@
-In what follows we will consider a concrete domain $\pair{\adomain}{=}$, where $\adomain$ is an infinite set and $=$ its correspondent equality relation. In what follows we will write just $\adomain$ for $\pair{\adomain}{=}$ to abbreviate.
+In what follows we will consider a concrete domain $\tup{\adomain,=,<}$, where $\adomain$ is an infinite set and $=$ its correspondent equality relation. In what follows we will write just $\adomain$ for $\tup{\adomain,=,<}$ to abbreviate.
 
 \paragraph{Syntax.} Let $\VAR$ be a countable set of variables over the concrete domain $\adomain$. The syntax of $\PLTLA(\adomain)$ is defined by the following grammar:
 \[
     \aformula,\aformulabis ::= \delta\avar = \delta'\avarbis \mid \neg\aformula \mid \aformula \vee \aformulabis \mid \Next\aformula \mid \Prev\aformula \mid \aformula \Until \aformulabis \mid \aformula\Since\aformulabis \mid \Assign{\avar}{\Nextn\avarbis} \mid \Assign{\avar}{\Prevn\avarbis},
 \]
-where $\avar,\avarbis\in\VAR$, $i\in\Nat_0$, and $\delta,\delta'\in\{\Nextn,\Prevn\}$. Other operators are defined as usual, in particular $\delta\avar \neq \delta'\avarbis\egdef \delta\avar = \delta'\avarbis$.
+where $\avar,\avarbis\in\VAR$, $i\in\Nat_0$, and $\delta,\delta'\in\{\Nextn,\Prevn\}$. Other operators are defined as usual, in particular $\delta\avar \neq \delta'\avarbis\egdef \delta\avar = \delta'\avarbis$, $\Eventually\aformula \egdef \top\Until\aformula$ and $\Always\aformula \egdef \neg\Eventually\neg\aformula$. 
+
 
 \paragraph{Sematics.} A \emph{concrete path} over $\adomain$ is an element $\apath\in\{f\mid f:\VAR\to\adomain\}^\omega$. By $\apath(i)(\avar)$ we denote the value assigned to the variable $\avar$ at position $i$ of the path.
+Let $\apath$ be a path, and let $i\leq 0$, the \defstyle{satisfaction relation} $\models$ between $\apath$ and formulas is inductively defined as follows:
+\[
+\begin{array}{lcl}
+\apath,i \models \avarprop & \iffdef & \avarprop\in\apath(i) \\
+\apath,i \models \neg\aformula & \iffdef & \apath,i \not\models\aformula \\
+\apath,i \models \aformula\vee\aformulabis & \iffdef & \apath,i \models \aformula \mbox{ or } \apath,i \models \aformulabis \\
+\apath,i \models \Next\aformula & \iffdef & \apath,i+1 \models \aformula \\ 
+\apath,i \models \Prev\aformula & \iffdef & i>0 \mbox{ and } \apath,i-1 \models \aformula \\
+\apath,i \models \aformula\Until\aformulabis & \iffdef & \apath,j \models \aformulabis \mbox{ for some } j\geq i \mbox{ s.t. } \apath,k \models \aformula \mbox{ for all } i\leq k < j \\
+\apath,i \models \aformula\Since\aformulabis & \iffdef & \apath,j \models \aformulabis \mbox{ for some } 0\leq j \leq i \mbox{ s.t. } \apath,k \models \aformula \mbox{ for all } j< k \leq i \\
+\apath,i \models \Assign{\avarprop}{\Nextn}\aformula & \iffdef & \apath^{\avarprop,i}_{n,\avarpropbis},i \models \aformula \\ 
+\apath,i \models \Assign{\avarprop}{\Prevn}\aformula & \iffdef & \apath^{\avarprop,i}_{{-}n,\avarpropbis},i \models \aformula,
+\end{array}
+\]
+where for $m\in\intnum$, $\apath^{\avarprop,i}_{m,\avarpropbis}(j)=\apath(j)$ for all $j\neq i$ and:
+\begin{equation*}
+    \apath^{\avarprop,i}_{n,\avarpropbis}(i) =
+    \begin{cases*}
+      \apath(i)\cup\{\avarprop\} & if $m+i \geq 0$ and $\avarpropbis\in\apath(i+m)$ \\
+      \apath(i)\setminus\{\avarprop\} & if $m+i \geq 0$ and $\avarpropbis\notin\apath(i+m)$ \\ 
+      \apath(i)        & otherwise
+    \end{cases*}
+\end{equation*}
+We say a formula $\aformula$ is \defstyle{satisfiable} if and only if there exists $\apath$ such that $\apath,0\models\aformula$.
+
 
 
 \begin{theorem}
