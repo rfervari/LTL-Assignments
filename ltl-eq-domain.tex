@@ -12,20 +12,22 @@ An \defstyle{atomic constraint} is an expression of one of the forms below:
         \aterm = \aterm' & \aterm < \aterm' & {=_{\adatum}}(\aterm) \mbox{ (also written $\aterm=\adatum$)},
     \end{array}
 \]
-where $\adatum\in\adomain$ and $\aterm,\aterm'$ are terms.
+where $\adatum\in\adomain$ and $\aterm,\aterm'$ are terms. 
+%Terms are interpreted over valuations $\avaluation: \VAR \to \adomain$. 
 
 \paragraph{Syntax.} Let $\VAR$ be a countable set of variables over the concrete domain $\adomain$. The syntax of $\PLTLA(\adomain)$ is defined by the following grammar:
 \[
-    \begin{array}{ll}
-    \aformula,\aformulabis & ::= \theta \mid \neg\aformula \mid \aformula \vee \aformulabis \mid \Next\aformula \mid \Prev\aformula \mid \aformula \Until \aformulabis \mid \aformula\Since\aformulabis \mid \Assign{\avar}{\aterm} \mid \Assign{\avar}{\adatum},
+    \begin{array}{l@{\;}l}
+    \aformula,\aformulabis  ::= & \aterm = \aterm' \mid \aterm < \aterm' \mid \aterm = \adatum \mid \neg\aformula \mid \aformula \vee \aformulabis \\
+     &  \mid \Next\aformula \mid \Prev\aformula \mid \aformula \Until \aformulabis \mid \aformula\Since\aformulabis \mid \Assign{\avar}{\aterm} \mid \Assign{\avar}{\adatum},
     \end{array}
 \]
-where: $\theta$ is an atomic constraint, $\avar\in\VAR$, $\aterm$ is a term, and $\adatum\in\adomain$.  
+where: $\aterm,\aterm'$ are terms, $\avar\in\VAR$, and $\adatum\in\adomain$.  
 
  Other operators are defined as usual, in particular $\aterm\neq \aterm'\egdef \neg(\aterm = \aterm')$, $\Eventually\aformula \egdef \top\Until\aformula$ and $\Always\aformula \egdef \neg\Eventually\neg\aformula$. 
 
 
-\paragraph{Sematics.} A \emph{concrete path} over $\adomain$ is an element $\apath\in\{f\mid f:\VAR\to\adomain\}^\omega$. By $\apath(i)(\avar)$ we denote the value assigned to the variable $\avar$ at position $i$ of the path.
+\paragraph{Semantics.} A \emph{concrete path} over $\adomain$ is an element $\apath\in\{f\mid f:\VAR\to\adomain\}^\omega$. By $\apath(i)(\avar)$ we denote the value assigned to the variable $\avar$ at position $i$ of the path.
 Let $\apath$ be a path, and let $i\leq 0$, the \defstyle{satisfaction relation} $\models$ between $\apath$ and formulas is inductively defined as follows:
 \[
 \begin{array}{lcl}
