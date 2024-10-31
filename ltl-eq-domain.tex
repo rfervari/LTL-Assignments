@@ -3,7 +3,7 @@ We start by introducing the logic extending $\LTL$ introduced first by~\cite{Pnu
 
 \paragraph{Concrete Domains.} In what follows we will consider a concrete domain $\tup{\adomain,=,<,,(=_{\adatum})_{\adatum\in\adomain}}$, where $\adomain$ is a set of elements, $=,<$ are the correspondent equality and `less than' relation, and $=_\adatum$ is an equality test with respect to the constant $\adatum$.  In what follows we will write just $\adomain$ for $\tup{\adomain,=,<,=_{\adatum}}$ to abbreviate.
 
-Let $\VAR=\{\avar,\avarbis,\avarter,\ldots\}$ be a countably infinite set of variables. a \defstyle{term} $\aterm$ over $\VAR$ is an expression of the form $\Nextn\avar$ or $\Prevn\avar$, where $\avar\in\VAR$ and $\Nextn$ (resp., $\Prevn$) is a (possibly empty) sequence of $n$ symbols $\Next$ (resp., $\Prev$). 
+Let $\VAR=\{\avar,\avarbis,\avarter,\ldots\}$ be a countably infinite set of variables. A \defstyle{term} $\aterm$ over $\VAR$ is an expression of the form $\Nextn\avar$ or $\Prevn\avar$, where $\avar\in\VAR$ and $\Nextn$ (resp., $\Prevn$) is a (possibly empty) sequence of $n$ symbols $\Next$ (resp., $\Prev$). 
 More precisely, the expressions $\Nextn\avar$ and $\Prevn\avar$ are inductively defined as: $\Next^0\avar \egdef \avar$ and $\Prev^0\avar \egdef \avar$; $\Next^{n+1}\avar \egdef \Next\Nextn\avar$ and $\Prev^{n+1}\avar \egdef \Prev\Prevn\avar$. 
 An \defstyle{atomic constraint} is an expression of one of the forms below:
 
@@ -17,38 +17,31 @@ where $\adatum\in\adomain$ and $\aterm,\aterm'$ are terms.
 \paragraph{Syntax.} Let $\VAR$ be a countable set of variables over the concrete domain $\adomain$. The syntax of $\PLTLA(\adomain)$ is defined by the following grammar:
 \[
     \begin{array}{ll}
-    \aformula,\aformulabis & ::= \theta \mid \neg\aformula \mid \aformula \vee \aformulabis \mid \Next\aformula \mid \Prev\aformula \mid \aformula \Until \aformulabis \mid \aformula\Since\aformulabis \mid \Assign{\avar}{\delta\avarbis} \mid \Assign{\avar}{\adatum},
+    \aformula,\aformulabis & ::= \theta \mid \neg\aformula \mid \aformula \vee \aformulabis \mid \Next\aformula \mid \Prev\aformula \mid \aformula \Until \aformulabis \mid \aformula\Since\aformulabis \mid \Assign{\avar}{\aterm} \mid \Assign{\avar}{\adatum},
     \end{array}
 \]
-where: $\theta$ is an atomic constraint, $\avar\in\VAR$, ${\sim}\in\{=,<\}$, $\delta,\delta'\in\{\Nextn,\Prevn\}$ with $n\in\Nat_0$, and $\adatum\in\adomain$.  
+where: $\theta$ is an atomic constraint, $\avar\in\VAR$, $\aterm$ is a term, and $\adatum\in\adomain$.  
 
- Other operators are defined as usual, in particular $\delta\avar \neq \delta'\avarbis\egdef \neg(\delta\avar = \delta'\avarbis)$, $\Eventually\aformula \egdef \top\Until\aformula$ and $\Always\aformula \egdef \neg\Eventually\neg\aformula$. 
+ Other operators are defined as usual, in particular $\aterm\neq \aterm'\egdef \neg(\aterm = \aterm')$, $\Eventually\aformula \egdef \top\Until\aformula$ and $\Always\aformula \egdef \neg\Eventually\neg\aformula$. 
 
 
 \paragraph{Sematics.} A \emph{concrete path} over $\adomain$ is an element $\apath\in\{f\mid f:\VAR\to\adomain\}^\omega$. By $\apath(i)(\avar)$ we denote the value assigned to the variable $\avar$ at position $i$ of the path.
 Let $\apath$ be a path, and let $i\leq 0$, the \defstyle{satisfaction relation} $\models$ between $\apath$ and formulas is inductively defined as follows:
 \[
 \begin{array}{lcl}
-\apath,i \models \avarprop & \iffdef & \avarprop\in\apath(i) \\
+\apath,i \models \theta & \iffdef & \theta(\apath(i)) \\
 \apath,i \models \neg\aformula & \iffdef & \apath,i \not\models\aformula \\
 \apath,i \models \aformula\vee\aformulabis & \iffdef & \apath,i \models \aformula \mbox{ or } \apath,i \models \aformulabis \\
 \apath,i \models \Next\aformula & \iffdef & \apath,i+1 \models \aformula \\ 
 \apath,i \models \Prev\aformula & \iffdef & i>0 \mbox{ and } \apath,i-1 \models \aformula \\
 \apath,i \models \aformula\Until\aformulabis & \iffdef & \apath,j \models \aformulabis \mbox{ for some } j\geq i \mbox{ s.t. } \apath,k \models \aformula \mbox{ for all } i\leq k < j \\
 \apath,i \models \aformula\Since\aformulabis & \iffdef & \apath,j \models \aformulabis \mbox{ for some } 0\leq j \leq i \mbox{ s.t. } \apath,k \models \aformula \mbox{ for all } j< k \leq i \\
-\apath,i \models \Assign{\avarprop}{\Nextn}\aformula & \iffdef & \apath^{\avarprop,i}_{n,\avarpropbis},i \models \aformula \\ 
-\apath,i \models \Assign{\avarprop}{\Prevn}\aformula & \iffdef & \apath^{\avarprop,i}_{{-}n,\avarpropbis},i \models \aformula,
+\apath,i \models \Assign{\avar}{\Nextn}\aformula & \iffdef & \apath[x\mapsto_i \apath(i+n)(\avarbis)],i \models \aformula \\ 
+\apath,i \models \Assign{\avar}{\Prevn}\aformula & \iffdef & i-n\geq 0 \mbox{ and } \apath[x\mapsto_i \apath(i-n)(\avarbis)],i \models \aformula \\
+\apath,i \models \Assign{\avar}{\adatum}\aformula & \iffdef & \apath[x\mapsto_i \adatum],i \models \aformula, \\ 
 \end{array}
 \]
-where for $m\in\intnum$, $\apath^{\avarprop,i}_{m,\avarpropbis}(j)=\apath(j)$ for all $j\neq i$ and:
-\begin{equation*}
-    \apath^{\avarprop,i}_{n,\avarpropbis}(i) =
-    \begin{cases*}
-      \apath(i)\cup\{\avarprop\} & if $m+i \geq 0$ and $\avarpropbis\in\apath(i+m)$ \\
-      \apath(i)\setminus\{\avarprop\} & if $m+i \geq 0$ and $\avarpropbis\notin\apath(i+m)$ \\ 
-      \apath(i)        & otherwise
-    \end{cases*}
-\end{equation*}
+where $\apath[\avar\mapsto_i \adatum](j)(\avarbis)=\apath(j)(\avarbis)$ if $j\neq i$  or $\avar\neq\avarbis$, and $\apath[x\mapsto_i \adatum](\avar)(i)  = \adatum$. 
 We say a formula $\aformula$ is \defstyle{satisfiable} if and only if there exists $\apath$ such that $\apath,0\models\aformula$.
 
 
