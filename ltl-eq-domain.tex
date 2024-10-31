@@ -1,10 +1,28 @@
-In what follows we will consider a concrete domain $\tup{\adomain,=,<}$, where $\adomain$ is an infinite set and $=$ its correspondent equality relation. In what follows we will write just $\adomain$ for $\tup{\adomain,=,<}$ to abbreviate.
+We start by introducing the logic extending $\LTL$ introduced first by~\cite{Pnueli77}. 
+
+
+\paragraph{Concrete Domains.} In what follows we will consider a concrete domain $\tup{\adomain,=,<,,(=_{\adatum})_{\adatum\in\adomain}}$, where $\adomain$ is a set of elements, $=,<$ are the correspondent equality and `less than' relation, and $=_\adatum$ is an equality test with respect to the constant $\adatum$.  In what follows we will write just $\adomain$ for $\tup{\adomain,=,<,=_{\adatum}}$ to abbreviate.
+
+Let $\VAR=\{\avar,\avarbis,\avarter,\ldots\}$ be a countably infinite set of variables. a \defstyle{term} $\aterm$ over $\VAR$ is an expression of the form $\Nextn\avar$ or $\Prevn\avar$, where $\avar\in\VAR$ and $\Nextn$ (resp., $\Prevn$) is a (possibly empty) sequence of $n$ symbols $\Next$ (resp., $\Prev$). 
+More precisely, the expressions $\Nextn\avar$ and $\Prevn\avar$ are inductively defined as: $\Next^0\avar \egdef \avar$ and $\Prev^0\avar \egdef \avar$; $\Next^{n+1}\avar \egdef \Next\Nextn\avar$ and $\Prev^{n+1}\avar \egdef \Prev\Prevn\avar$. 
+An \defstyle{atomic constraint} is an expression of one of the forms below:
+
+\[
+    \begin{array}{c@{\quad\quad}c@{\quad\quad}c}
+        \aterm = \aterm' & \aterm < \aterm' & {=_{\adatum}}(\aterm) \mbox{ (also written $\aterm=\adatum$)},
+    \end{array}
+\]
+where $\adatum\in\adomain$ and $\aterm,\aterm'$ are terms.
 
 \paragraph{Syntax.} Let $\VAR$ be a countable set of variables over the concrete domain $\adomain$. The syntax of $\PLTLA(\adomain)$ is defined by the following grammar:
 \[
-    \aformula,\aformulabis ::= \delta\avar = \delta'\avarbis \mid \neg\aformula \mid \aformula \vee \aformulabis \mid \Next\aformula \mid \Prev\aformula \mid \aformula \Until \aformulabis \mid \aformula\Since\aformulabis \mid \Assign{\avar}{\Nextn\avarbis} \mid \Assign{\avar}{\Prevn\avarbis},
+    \begin{array}{ll}
+    \aformula,\aformulabis & ::= \theta \mid \neg\aformula \mid \aformula \vee \aformulabis \mid \Next\aformula \mid \Prev\aformula \mid \aformula \Until \aformulabis \mid \aformula\Since\aformulabis \mid \Assign{\avar}{\delta\avarbis} \mid \Assign{\avar}{\adatum},
+    \end{array}
 \]
-where $\avar,\avarbis\in\VAR$, $i\in\Nat_0$, and $\delta,\delta'\in\{\Nextn,\Prevn\}$. Other operators are defined as usual, in particular $\delta\avar \neq \delta'\avarbis\egdef \delta\avar = \delta'\avarbis$, $\Eventually\aformula \egdef \top\Until\aformula$ and $\Always\aformula \egdef \neg\Eventually\neg\aformula$. 
+where: $\theta$ is an atomic constraint, $\avar\in\VAR$, ${\sim}\in\{=,<\}$, $\delta,\delta'\in\{\Nextn,\Prevn\}$ with $n\in\Nat_0$, and $\adatum\in\adomain$.  
+
+ Other operators are defined as usual, in particular $\delta\avar \neq \delta'\avarbis\egdef \neg(\delta\avar = \delta'\avarbis)$, $\Eventually\aformula \egdef \top\Until\aformula$ and $\Always\aformula \egdef \neg\Eventually\neg\aformula$. 
 
 
 \paragraph{Sematics.} A \emph{concrete path} over $\adomain$ is an element $\apath\in\{f\mid f:\VAR\to\adomain\}^\omega$. By $\apath(i)(\avar)$ we denote the value assigned to the variable $\avar$ at position $i$ of the path.
@@ -35,17 +53,4 @@ We say a formula $\aformula$ is \defstyle{satisfiable} if and only if there exis
 
 
 
-\begin{theorem}
- The satisfiability problem for $\PLTLA(\adomain)$ is \tower-hard.
-\end{theorem}
-
-\begin{proof}
-    To show hardness, we can show what we can reduce the satisfiability problem of $\FOL$ over linear models, or from Hybrid $\LTL$ (see~\cite{FranceschetRS03}).
-
-    \bigraul{The question is, can we reduce it into $\PLTLA(\adomain)$ with only 1 variable??}
-\end{proof}
-
-\begin{conjecture}
-    There is a translation from $\PLTLA(\adomain)$ into $\FOL$ over data words. Thus, the satisfiability problem for $\PLTLA(\adomain)$ is in \ack.
-\end{conjecture}
 
