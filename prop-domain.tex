@@ -1,0 +1,75 @@
+In this section we consider the case in which $\adomain$ is a binary domain, in particular, we will take it to be Boolean values. In order to use most standard notation related to propositional logic, we will adapt the notation of the logic, without adding expressive power though. 
+
+\paragraph{Syntax.} Let $\PROP$ be a countable set of propositional symbols. The syntax of $\PLTLA$ is defined by the following grammar:
+\[
+    \aformula,\aformulabis ::= \avarprop \mid \neg\aformula \mid \aformula \vee \aformulabis \mid \Next\aformula \mid \Prev\aformula \mid \aformula \Until \aformulabis \mid \aformula\Since\aformulabis \mid \Assign{\avarprop}{\Nextn\avarpropbis} \mid \Assign{\avarprop}{\Prevn\avarpropbis},
+\]
+where $\avarprop\in\PROP$, $i\in\Nat_0$. Other operators are defined as usual, in particular $\Eventually\aformula \egdef \top\Until\aformula$ and $\Always\aformula \egdef \neg\Eventually\neg\aformula$.
+
+
+\paragraph{Semantics.} A \defstyle{linear time structure} (or \defstyle{path}) is an $\omega$-sequence $\apath$, such that for every position $0\leq i$, $\apath(i) \subseteq \PROP$. In other words, $\apath\in(2^\PROP)^\omega$. 
+Let $\apath$ be a path, and let $i\leq 0$, the \defstyle{satisfaction relation} $\models$ between $\apath$ and formulas is inductively defined as follows:
+\[
+\begin{array}{lcl}
+\apath,i \models \avarprop & \iffdef & \avarprop\in\apath(i) \\
+% \apath,i \models \neg\aformula & \iffdef & \apath,i \not\models\aformula \\
+% \apath,i \models \aformula\vee\aformulabis & \iffdef & \apath,i \models \aformula \mbox{ or } \apath,i \models \aformulabis \\
+% \apath,i \models \Next\aformula & \iffdef & \apath,i+1 \models \aformula \\ 
+% \apath,i \models \Prev\aformula & \iffdef & i>0 \mbox{ and } \apath,i-1 \models \aformula \\
+% \apath,i \models \aformula\Until\aformulabis & \iffdef & \apath,j \models \aformulabis \mbox{ for some } j\geq i \mbox{ s.t. } \apath,k \models \aformula \mbox{ for all } i\leq k < j \\
+% \apath,i \models \aformula\Since\aformulabis & \iffdef & \apath,j \models \aformulabis \mbox{ for some } 0\leq j \leq i \mbox{ s.t. } \apath,k \models \aformula \mbox{ for all } j< k \leq i \\
+\apath,i \models \Assign{\avarprop}{\Nextn}\aformula & \iffdef & \apath^{\avarprop,i}_{n,\avarpropbis},i \models \aformula \\ 
+\apath,i \models \Assign{\avarprop}{\Prevn}\aformula & \iffdef & \apath^{\avarprop,i}_{{-}n,\avarpropbis},i \models \aformula,
+\end{array}
+\]
+% where for $m\in\intnum$, $\apath^{\avarprop,i}_{m,\avarpropbis}(j)=\apath(j)$ for all $j\neq i$ and:
+% \begin{equation*}
+%     \apath^{\avarprop,i}_{n,\avarpropbis}(i) =
+%     \begin{cases*}
+%       \apath(i)\cup\{\avarprop\} & if $m+i \geq 0$ and $\avarpropbis\in\apath(i+m)$ \\
+%       \apath(i)\setminus\{\avarprop\} & if $m+i \geq 0$ and $\avarpropbis\notin\apath(i+m)$ \\ 
+%       \apath(i)        & otherwise
+%     \end{cases*}
+% \end{equation*}
+We say a formula $\aformula$ is \defstyle{satisfiable} if and only if there exists $\apath$ such that $\apath,0\models\aformula$.
+
+\begin{lemma}
+ Let $\aformula$ be a $\FOL$-formula. Then, $\aformula$ is satisfiable over linear structures if and only if there is an $\PLTLA$-formula $\aformula'$ such that $\aformula'$ is satisfiable. 
+\end{lemma}
+
+The previous result actually follows from the following ones:
+
+\begin{lemma}
+    Let $\aformula$ be a $\FOL$-formula. Then, 
+    \begin{enumerate}
+        \item $\aformula$ is satisfiable over linear structures if and only if there is an $\PLTLA$-formula $\aformula'$ with only 1 variable such that $\aformula'$ is satisfiable, and 
+        \item $\aformula$ is satisfiable over linear structures if and only if there is an $\PLTLA$-formula $\aformula'$ with only 2 variables and where each $\Nextn$ and $\Prevn$ in $\aformula'$ is such that $n\in\{0,1\}$, such that $\aformula'$ is satisfiable.
+    \end{enumerate}
+\end{lemma}
+
+\begin{corollary}
+    The satisfiability problem for $\PLTLA$ with propositional assignments is \tower-hard.
+\end{corollary}
+
+The \tower upper bound will follow from the result in the next sections, establishing that $\PLTLA$ over more expressive concrete domains are also in \tower.
+
+
+% By internalizing the semantics of $\PLTLA$, we can fairly easily obtain the following property:
+
+% \begin{lemma}
+%     Every formula of $\PLTLA$ can be translated into an equivalent formula of $\MSO$. Thus, deciding satisfiability if $\PLTLA$ can be done in \tower.
+% \end{lemma}
+
+% Putting altogether, we get:
+
+\begin{theorem}
+    The satisfiability problem for $\PLTLA$ is \tower-complete.
+\end{theorem}
+
+Moreover, if we allow expressions of the form $\Assign{\avar}{\aformula}\aformulabis$, with $\aformula$ an arbitrary formula of $\PLTLA$, our results also follow. In particular,  $\Assign{\avar}{\aformula}\aformulabis$ can be internalized into the base language as $(\aformula\Limp\Assign{\avar}{\top}\aformulabis \wedge \neg\aformula\Limp\Assign{\avar}{\bot}\aformulabis)$.
+
+% The following result gives us another way of characterizing the \tower upper bound for the satisfiability problem of $\PLTLA$, but also it provides us an exact characterization of the expressivity of the logic.
+
+% \begin{theorem}
+%     $\PLTLA$ and $\FOL$ are equally expressive.
+% \end{theorem}

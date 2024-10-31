@@ -1,0 +1,39 @@
+\begin{theorem}
+ The satisfiability problem for $\PLTLA(\adomain)$ is \tower-hard.
+\end{theorem}
+
+\begin{proof}
+Hardness follows from hardness from~\Cref{sec:prop-assign}.
+
+    % \bigraul{The question is, can we reduce it into $\PLTLA(\adomain)$ with only 1 variable??}
+\end{proof}
+
+\subsection{Detour: A new decidable \FOL fragment over multi-data words} 
+
+We need to introduce a new logic \defstyle{local \FOL over multi-data words}. Let $\{f_1,\dots,f_\beta\}$ be a set of function symbols:
+\[
+\begin{array}{l@{\;}l}
+    \aformula, \aformulabis ::= & \avar = \avarbis \mid \avar < \avarbis \mid \avar = \avarbis + 1 \mid a(\avar) \mid \neg\aformula \mid \aformula \vee \aformulabis \\ 
+    & \mid \exists x.\varphi \mid f_i(\avar + k_1) \sim f_j(\avar+k_2) \mid f_i(\avar + k_1) < f_j(\avar+k_2) \mid f_i(\avar + k_1) = a
+\end{array}
+\]
+
+Models are of the form $(\adomain^\beta)^\omega$, and we call them multi-data words. \raul{This is just a sketch of the defs. We need to polish them}
+
+\begin{theorem}
+ The satisfiability problem for local \FOL over multi-data words is in \tower.
+\end{theorem}
+
+\begin{proof}
+Lower bound follows from \tower-completeness of \FOL. \raul{Reference?}. Upper bound to check satisfiability of $\aformula$: 
+\begin{enumerate}
+    \item Use the notion of transfer graphs to characterize a window of comparison.
+    \item Reduce the satisfiability problem into satisfiability over symbolic models (each letter of the path is a set of constraints over the variables involved).
+    \item It remains to extract a concrete model from the symbolic model. This is performed due to \cite{Demri&Quaas2023}, by using the B\"chi automata $\mathbb{A}_\aformula$.
+    \bigraul{Some missing step?}
+\end{enumerate}
+\end{proof}
+
+\begin{conjecture}
+    There is a translation from $\PLTLA(\adomain)$ into `local' $\FOL$ over multi-data words. Thus, the satisfiability problem for $\PLTLA(\adomain)$ is in \tower.
+\end{conjecture}
