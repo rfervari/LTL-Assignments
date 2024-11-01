@@ -12,7 +12,7 @@ An \defstyle{atomic constraint} is an expression of one of the forms below:
         \aterm = \aterm' & \aterm < \aterm' & {=_{\adatum}}(\aterm) \mbox{ (also written $\aterm=\adatum$)},
     \end{array}
 \]
-where $\adatum\in\adomain$ and $\aterm,\aterm'$ are terms. 
+where $\adatum\in\adomain$ and $\aterm,\aterm'$ are terms. Let $\aterm$ be $\Nextn\avar$ or $\Prevn\avar$, we define $\aterm_v=\avar$. 
 %Terms are interpreted over valuations $\avaluation: \VAR \to \adomain$. 
 
 \paragraph{Syntax.} Let $\VAR$ be a countable set of variables over the concrete domain $\adomain$. The syntax of $\PLTLA(\adomain)$ is defined by the following grammar:
@@ -31,7 +31,8 @@ where: $\aterm,\aterm'$ are terms, $\avar\in\VAR$, and $\adatum\in\adomain$.
 Let $\apath$ be a path, and let $i\leq 0$, the \defstyle{satisfaction relation} $\models$ between $\apath$ and formulas is inductively defined as follows:
 \[
 \begin{array}{lcl}
-\apath,i \models \theta & \iffdef & \theta(\apath(i)) \\
+\apath,i \models \aterm \sim \aterm' & \iffdef & \pos(\aterm)>0, \ \pos(\aterm')> 0 \mbox{ and } \apath(\pos(\aterm))(\aterm_v) \sim \apath(\pos(\aterm))(\aterm'_v)  \mbox{ (for ${\sim}\in\{=,<\}$) } \\
+\apath,i \models \aterm = \adatum & \iffdef & \pos(\aterm)>0 \mbox{ and } \apath(\pos(\aterm))(\aterm_v) = \adatum \\
 \apath,i \models \neg\aformula & \iffdef & \apath,i \not\models\aformula \\
 \apath,i \models \aformula\vee\aformulabis & \iffdef & \apath,i \models \aformula \mbox{ or } \apath,i \models \aformulabis \\
 \apath,i \models \Next\aformula & \iffdef & \apath,i+1 \models \aformula \\ 
