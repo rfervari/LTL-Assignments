@@ -28,7 +28,7 @@ where: $\aterm,\aterm'$ are terms, $\avar\in\VAR$, and $\adatum\in\adomain$.
 
 
 \paragraph{Semantics.} A \emph{concrete path} over $\adomain$ is an element $\apath\in\{f\mid f:\VAR\to\adomain\}^\omega$. By $\apath(i)(\avar)$ we denote the value assigned to the variable $\avar$ at position $i$ of the path.
-Let $\apath$ be a path, and let $i\leq 0$, the \defstyle{satisfaction relation} $\models$ between $\apath$ and formulas is inductively defined as follows:
+Let $\apath$ be a path, and let $i\geq 0$, the \defstyle{satisfaction relation} $\models$ between $\apath$ and formulas is inductively defined as follows:
 \[
 \begin{array}{lcl}
 \apath,i \models \aterm \sim \aterm' & \iffdef & \pos^i(\aterm) \geq 0, \ \pos^i(\aterm') \geq 0 \mbox{ and } \\ & & \apath(\pos^i(\aterm))(\aterm_v) \sim \apath(\pos^i(\aterm))(\aterm'_v) \ \  \mbox{ (for ${\sim}\in\{=,<\}$) } \\

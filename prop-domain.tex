@@ -8,7 +8,7 @@ where $\avarprop\in\PROP$, $i\in\Nat_0$. Other operators are defined as usual, i
 
 
 \paragraph{Semantics.} A \defstyle{linear time structure} (or \defstyle{path}) is an $\omega$-sequence $\apath$, such that for every position $0\leq i$, $\apath(i) \subseteq \PROP$. In other words, $\apath\in(2^\PROP)^\omega$. 
-Let $\apath$ be a path, and let $i\leq 0$, the \defstyle{satisfaction relation} $\models$ between $\apath$ and formulas is inductively defined as follows:
+Let $\apath$ be a path, and let $i\geq 0$, the \defstyle{satisfaction relation} $\models$ between $\apath$ and formulas is inductively defined as follows:
 \[
 \begin{array}{lcl}
 \apath,i \models \avarprop & \iffdef & \avarprop\in\apath(i) \\
