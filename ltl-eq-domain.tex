@@ -31,7 +31,7 @@ where: $\aterm,\aterm'$ are terms, $\avar\in\VAR$, and $\adatum\in\adomain$.
 Let $\apath$ be a path, and let $i\leq 0$, the \defstyle{satisfaction relation} $\models$ between $\apath$ and formulas is inductively defined as follows:
 \[
 \begin{array}{lcl}
-\apath,i \models \aterm \sim \aterm' & \iffdef & \pos^i(\aterm) \geq 0, \ \pos^i(\aterm') \geq 0 \mbox{ and } \\ & & \apath(\pos^i(\aterm))(\aterm_v) \sim \apath(\pos^i(\aterm))(\aterm'_v)  \mbox{ (for ${\sim}\in\{=,<\}$) } \\
+\apath,i \models \aterm \sim \aterm' & \iffdef & \pos^i(\aterm) \geq 0, \ \pos^i(\aterm') \geq 0 \mbox{ and } \\ & & \apath(\pos^i(\aterm))(\aterm_v) \sim \apath(\pos^i(\aterm))(\aterm'_v) \ \  \mbox{ (for ${\sim}\in\{=,<\}$) } \\
 \apath,i \models \aterm = \adatum & \iffdef & \pos^i(\aterm) \geq 0 \mbox{ and } \apath(\pos^i(\aterm))(\aterm_v) = \adatum \\
 \apath,i \models \neg\aformula & \iffdef & \apath,i \nVdash\aformula \\
 \apath,i \models \aformula\vee\aformulabis & \iffdef & \apath,i \models \aformula \mbox{ or } \apath,i \models \aformulabis \\
@@ -39,12 +39,12 @@ Let $\apath$ be a path, and let $i\leq 0$, the \defstyle{satisfaction relation} 
 \apath,i \models \Prev\aformula & \iffdef & i>0 \mbox{ and } \apath,i-1 \models \aformula \\
 \apath,i \models \aformula\Until\aformulabis & \iffdef & \apath,j \models \aformulabis \mbox{ for some } j\geq i \mbox{ s.t. } \apath,k \models \aformula \mbox{ for all } i\leq k < j \\
 \apath,i \models \aformula\Since\aformulabis & \iffdef & \apath,j \models \aformulabis \mbox{ for some } 0\leq j \leq i \mbox{ s.t. } \apath,k \models \aformula \mbox{ for all } j< k \leq i \\
-\apath,i \models \Assign{\avar}{\Nextn}\aformula & \iffdef & \apath[x\mapsto_i \apath(i+n)(\avarbis)],i \models \aformula \\ 
-\apath,i \models \Assign{\avar}{\Prevn}\aformula & \iffdef & i-n\geq 0 \mbox{ and } \apath[x\mapsto_i \apath(i-n)(\avarbis)],i \models \aformula \\
-\apath,i \models \Assign{\avar}{\adatum}\aformula & \iffdef & \apath[x\mapsto_i \adatum],i \models \aformula, \\ 
+\apath,i \models \Assign{\avar}{\Nextn\avarbis}\aformula & \iffdef & \apath[\avar\mapsto_i \apath(i+n)(\avarbis)],i \models \aformula \\ 
+\apath,i \models \Assign{\avar}{\Prevn\avarbis}\aformula & \iffdef & i-n\geq 0 \mbox{ and } \apath[\avar\mapsto_i \apath(i-n)(\avarbis)],i \models \aformula \\
+\apath,i \models \Assign{\avar}{\adatum}\aformula & \iffdef & \apath[\avar\mapsto_i \adatum],i \models \aformula, \\ 
 \end{array}
 \]
-where $\apath[\avar\mapsto_i \adatum](j)(\avarbis)=\apath(j)(\avarbis)$ if $j\neq i$  or $\avar\neq\avarbis$, and $\apath[x\mapsto_i \adatum](\avar)(i)  = \adatum$. 
+where $\apath[\avar\mapsto_i \adatum](j)(\avarbis)=\apath(j)(\avarbis)$ if $j\neq i$  or $\avar\neq\avarbis$, and $\apath[\avar\mapsto_i \adatum](\avar)(i)  = \adatum$. 
 We say a formula $\aformula$ is \defstyle{satisfiable} if and only if there exists $\apath$ such that $\apath,0\models\aformula$.
 
 

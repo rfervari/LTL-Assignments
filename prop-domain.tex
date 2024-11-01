@@ -18,8 +18,8 @@ Let $\apath$ be a path, and let $i\leq 0$, the \defstyle{satisfaction relation} 
 % \apath,i \models \Prev\aformula & \iffdef & i>0 \mbox{ and } \apath,i-1 \models \aformula \\
 % \apath,i \models \aformula\Until\aformulabis & \iffdef & \apath,j \models \aformulabis \mbox{ for some } j\geq i \mbox{ s.t. } \apath,k \models \aformula \mbox{ for all } i\leq k < j \\
 % \apath,i \models \aformula\Since\aformulabis & \iffdef & \apath,j \models \aformulabis \mbox{ for some } 0\leq j \leq i \mbox{ s.t. } \apath,k \models \aformula \mbox{ for all } j< k \leq i \\
-\apath,i \models \Assign{\avarprop}{\Nextn}\aformula & \iffdef & \apath^{\avarprop,i}_{n,\avarpropbis},i \models \aformula \\ 
-\apath,i \models \Assign{\avarprop}{\Prevn}\aformula & \iffdef & \apath^{\avarprop,i}_{{-}n,\avarpropbis},i \models \aformula,
+\apath,i \models \Assign{\avarprop}{\Nextn\avarpropbis}\aformula & \iffdef & \apath[\avarprop\mapsto_i \apath(i+n)(\avarpropbis)],i \models \aformula \\ 
+\apath,i \models \Assign{\avarprop}{\Prevn\avarpropbis}\aformula & \iffdef & i-n \geq 0 \mbox{ and } \apath[\avarprop\mapsto_i \apath(i-n)(\avarpropbis)],i \models \aformula,
 \end{array}
 \]
 % where for $m\in\intnum$, $\apath^{\avarprop,i}_{m,\avarpropbis}(j)=\apath(j)$ for all $j\neq i$ and:
